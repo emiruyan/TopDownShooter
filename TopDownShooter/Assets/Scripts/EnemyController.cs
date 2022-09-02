@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     private Transform playerPos;//Playerımızın transform'u  
-    public float speed;
+    public float speed;//Enemy' atayacağımız hızı
 
     private void Start()
     {

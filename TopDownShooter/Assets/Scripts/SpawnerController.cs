@@ -1,18 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SpawnerController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject enemyPrefab; //Çoğalacak nesnemiz
+    public Transform[] spawnPoints;//Birden fazla olduğu için spawnPoints'in Transform'u dizi şeklinde oluşturduk.
+    public float interval;
+
+    private void Start()
     {
-        
+        InvokeRepeating("Spawn", 0.5f, interval); //Belirttiğimiz değerlerde tekrar tekrar çalışacak
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Spawn()
     {
+        int randPos = Random.Range(0, spawnPoints.Length); 
+        //Random olarak 0 ile spawnPoints uzunluğu kadar bir değeri randPos'a atıyoruz
+        GameObject newEnemy = Instantiate(enemyPrefab, spawnPoints[randPos].position, Quaternion.identity);
         
     }
 }
