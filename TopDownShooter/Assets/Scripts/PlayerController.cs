@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,6 +17,13 @@ public class PlayerController : MonoBehaviour
     public int playerHealth = 10;
 
     private Vector2 movement;
+
+    public GameObject _gameOverPanel;
+
+    private void Start()
+    {
+        Time.timeScale = 1;
+    }
 
     private void Update()
     {
@@ -45,20 +53,26 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.tag == "Enemy")
+        if (col.tag == "Enemy")//Çarpan objenin tag'ı "Enemy"ise
         {
            TakeDamage();
             
-            if (playerHealth == 0) 
+            if (playerHealth == 0) //playerHealth 0'a eşit ise
             {
-                Time.timeScale = 0;
+                Time.timeScale = 0;//Oyunu durdur
+                _gameOverPanel.SetActive(true);
             }
         }
     }
 
     private void TakeDamage()
     {
-        playerHealth--;
+        playerHealth--;//playerHealth bir bir azalsın
 
+    }
+
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene(0);
     }
 }
