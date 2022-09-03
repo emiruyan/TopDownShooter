@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -50,4 +51,7 @@ TagManager:
     locked: 0
   - name: Enemy
     uniqueID: 1609575895
+    locked: 0
+  - name: Canvas
+    uniqueID: 3425489849
     locked: 0

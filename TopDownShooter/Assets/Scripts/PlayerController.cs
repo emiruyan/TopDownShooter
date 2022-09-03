@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     [Header("Gameplay")]
     public float speed;
 
+    public int playerHealth = 10;
+
     private Vector2 movement;
 
     private void Update()
@@ -39,5 +41,24 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isRunning", false);//koşmuyorsa false
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.tag == "Enemy")
+        {
+           TakeDamage();
+            
+            if (playerHealth == 0) 
+            {
+                Time.timeScale = 0;
+            }
+        }
+    }
+
+    private void TakeDamage()
+    {
+        playerHealth--;
+
     }
 }

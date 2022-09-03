@@ -23,6 +23,6 @@ public class BulletController : MonoBehaviour
         speed * Time.deltaTime
         );
         
-        Destroy(gameObject, 2f);//Mermileri belirli bir süre sonra yok ediyoruz.
+        Destroy(gameObject, 0.8f);//Mermileri belirli bir süre sonra yok ediyoruz.
     }
 }
