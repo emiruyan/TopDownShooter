@@ -7,14 +7,16 @@ using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
+    private GameManager gameManager;//GameManager class'ımıza erişeceğiz.
     private Transform playerPos;//Playerımızın transform'u  
     public float speed;//Enemy' atayacağımız hızı
-    private int health = 3; //Enemy health
-    // private int score;
-    // public Text scoreText;
+    public int health = 3; //Enemy health
+    
+    
     
     private void Start()
     {
+        gameManager = GameObject.FindObjectOfType<GameManager>();
         playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         //Player tagı aracılığı ile player'ın transformuna erişeceğiz
     }
@@ -30,10 +32,8 @@ public class EnemyController : MonoBehaviour
         if (health <= 0)//Enemy health'i 0'a küçük eşit ise
         {
             Destroy(gameObject);//Enemy'i yok et
-            // score++;
-            // scoreText.text = score.ToString();
-
-            
+            gameManager.score++;//gameManager içerisindeki score değişkenini bir bir arttır.
+            gameManager.GameScore();//gameManager içerisinde ki GameScore methodunu çalıştır.
         }
     
     }

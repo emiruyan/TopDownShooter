@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  scoreText: {fileID: 3495981931412314299, guid: 7b647696673aca84c88464f221c155fe, type: 3}
 --- !u!61 &2742002802156720679
 BoxCollider2D:
   m_ObjectHideFlags: 0

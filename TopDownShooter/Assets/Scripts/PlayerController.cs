@@ -3,9 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    private EnemyController _enemyController;//EnemyController classımıza eriştik
+    private GameManager _gameManager;//GameManager classımıza eriştik
+    
     [Header("Components")]
     public Rigidbody2D rb;
 
@@ -18,11 +22,14 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 movement;
 
-    public GameObject _gameOverPanel;
+    //[Header("Canvas")]
+    //public GameObject _gameOverPanel;
+    
 
     private void Start()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 1;//Play again bastıktan sonra tekrardan timeScale aktif ediyoruz.
+        _gameManager = GameObject.FindObjectOfType<GameManager>();
     }
 
     private void Update()
@@ -60,19 +67,17 @@ public class PlayerController : MonoBehaviour
             if (playerHealth == 0) //playerHealth 0'a eşit ise
             {
                 Time.timeScale = 0;//Oyunu durdur
-                _gameOverPanel.SetActive(true);
+                _gameManager._gameOverPanel.SetActive(true);//_gameManager içerisindeki gameOverPanel'i true'a çek
             }
         }
     }
-
+    
+    
     private void TakeDamage()
     {
         playerHealth--;//playerHealth bir bir azalsın
 
     }
-
-    public void PlayAgain()
-    {
-        SceneManager.LoadScene(0);
-    }
+    
+    
 }
